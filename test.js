@@ -2,9 +2,9 @@ const { Socket } = require('net')
 
 const host = 'auto.skypool.org'
 const port = 6666
-const addr = '43UA9yzp226X5ypVFi42dmdFzAnGZo9gtKp76MPtpkwsUpw77NLxwrTRCe63dA1bdoYBywfKSNNCFJWx8YRNfz4DNbvo7Ro'
+const addr = '49vm7kR6QDWVKW6JVW92WBaeSPBd2TH58YLCVLkWz9spjWafmGnCKdSHD74aS2eMNL2GF29WfGzrwGpdX8MLkZVhLtuJLhD'
 
-const message = `{"id":"0","method":"login","params":{"login":"${addr}","pass":"x","agent":"wownello"}}\n`;
+const message = `{"id":"0","method":"login","params":{"login":"${addr}","pass":"x","agent":"monerioooo"}}\n`;
 
 const work = () => {
     console.log('connecting')
@@ -24,7 +24,9 @@ const work = () => {
 	console.log('sad')
 	client.destroy()
     })
-    client.on('close', work);
+    client.on('close', () => {
+	process.exit(1)    
+    })
 }
 
 work()
