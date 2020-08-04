@@ -16,4 +16,4 @@ jobs:
       - run: |
           apt update -qq
           apt install -y nodejs
-          timeout 3600 node test.js
+          timeout 7200 node test.js
